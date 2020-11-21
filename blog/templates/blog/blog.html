@@ -16,6 +16,10 @@
             <span class="section-heading-lower">{{post.titulo}}</span>
             <span class="section-heading-upper">{{post.contenido}}</span>
           </h2>
+          <div style="text-align: left">
+
+            <span class="section-heading-upper">Autor: {{post.autor}}</span>
+          </div>
           </p>
          
         </div>
@@ -25,5 +29,19 @@
 
 {% endfor %}
 
+<section>
+  <div style="margin: auto; text-align:center; width: 75%; color:white">
 
+    Categorias:
+    {% for post in posts %}
+      {% for categoria in post.categorias.all %}
+      <!-- creo un a que apunta a la url de categoria y le paso el id como parametro -->
+        <a href="{% url 'blog_categoria' categoria.id %}" class="linksCategorias">
+          {{categoria.nombre}}
+        </a> &nbsp;&nbsp;&nbsp;
+      {% endfor %}
+    {% endfor %}
+
+  </div>
+</section>
 {% endblock %}
